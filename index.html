@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>日语单词练习 - 新标准日本语</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+
+<div id="app">
+  <!-- ====== HOME SCREEN ====== -->
+  <div id="home-screen" class="screen active">
+    <div class="header">
+      <h1>📚 日语单词练习</h1>
+      <p class="subtitle">新标准日本语 · 第1~5课</p>
+    </div>
+
+    <div class="card">
+      <h3>🎯 练习模式</h3>
+      <div class="mode-toggle">
+        <button class="mode-btn active" data-mode="cn2jp">
+          <span class="mode-icon">🇨🇳→🇯🇵</span>
+          <span class="mode-label">看中文 → 打日文</span>
+          <span class="mode-hint">接受假名或汉字</span>
+        </button>
+        <button class="mode-btn" data-mode="jp2cn">
+          <span class="mode-icon">🇯🇵→🇨🇳</span>
+          <span class="mode-label">看日文 → 打中文</span>
+          <span class="mode-hint">输入中文翻译</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📖 课程范围</h3>
+      <div class="lesson-grid">
+        <button class="lesson-btn selected" data-lesson="1">第1课</button>
+        <button class="lesson-btn selected" data-lesson="2">第2课</button>
+        <button class="lesson-btn selected" data-lesson="3">第3课</button>
+        <button class="lesson-btn selected" data-lesson="4">第4课</button>
+        <button class="lesson-btn selected" data-lesson="5">第5课</button>
+      </div>
+      <div class="select-all-row">
+        <button class="text-btn" id="select-all-lessons">全选</button>
+        <button class="text-btn" id="deselect-all-lessons">取消全选</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🏷️ 单词类别 <span class="badge" id="category-count"></span></h3>
+      <div class="category-grid" id="category-grid"></div>
+    </div>
+
+    <div class="card">
+      <h3>🔢 题目数量</h3>
+      <div class="count-slider">
+        <input type="range" id="question-count" min="5" max="50" value="20" step="5">
+        <span class="count-display" id="count-display">20 题</span>
+      </div>
+    </div>
+
+    <button class="btn-primary btn-large" id="start-btn">🚀 开始练习</button>
+
+    <div class="footer-info">
+      <p>共 <strong id="total-words">0</strong> 个单词可用</p>
+    </div>
+  </div>
+
+  <!-- ====== QUIZ SCREEN ====== -->
+  <div id="quiz-screen" class="screen">
+    <div class="quiz-header">
+      <button class="icon-btn" id="quit-btn" title="退出">✕</button>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <span class="progress-text" id="progress-text">1/20</span>
+    </div>
+
+    <div class="quiz-body">
+      <div class="mode-badge" id="mode-badge"></div>
+
+      <div class="question-card" id="question-card">
+        <div class="question-label" id="question-label"></div>
+        <div class="question-word" id="question-word"></div>
+        <div class="question-hint" id="question-hint"></div>
+      </div>
+
+      <div class="answer-area">
+        <input type="text" id="answer-input"
+               class="answer-input"
+               placeholder="输入答案..."
+               autocomplete="off"
+               autocorrect="off"
+               autocapitalize="off">
+        <button class="btn-primary" id="submit-btn">确 认</button>
+        <button class="btn-secondary" id="skip-btn">跳过 ›</button>
+      </div>
+
+      <div class="feedback" id="feedback" style="display:none;">
+        <div class="feedback-icon" id="feedback-icon"></div>
+        <div class="feedback-text" id="feedback-text"></div>
+        <div class="feedback-answer" id="feedback-answer"></div>
+        <button class="btn-primary" id="next-btn">下一题 ›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== RESULT SCREEN ====== -->
+  <div id="result-screen" class="screen">
+    <div class="header">
+      <h1>📊 练习结果</h1>
+    </div>
+
+    <div class="result-score" id="result-score">
+      <div class="score-circle" id="score-circle">
+        <span class="score-number" id="score-number">0</span>
+        <span class="score-unit">分</span>
+      </div>
+    </div>
+
+    <div class="result-stats">
+      <div class="stat-item correct">
+        <span class="stat-value" id="stat-correct">0</span>
+        <span class="stat-label">✅ 正确</span>
+      </div>
+      <div class="stat-item wrong">
+        <span class="stat-value" id="stat-wrong">0</span>
+        <span class="stat-label">❌ 错误</span>
+      </div>
+      <div class="stat-item skipped">
+        <span class="stat-value" id="stat-skipped">0</span>
+        <span class="stat-label">⏭️ 跳过</span>
+      </div>
+      <div class="stat-item accuracy">
+        <span class="stat-value" id="stat-accuracy">0%</span>
+        <span class="stat-label">🎯 正确率</span>
+      </div>
+    </div>
+
+    <div class="card" id="wrong-list-card" style="display:none;">
+      <h3>📝 错题回顾</h3>
+      <div id="wrong-list"></div>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn-primary" id="retry-all-btn">🔄 再练一次</button>
+      <button class="btn-secondary" id="retry-wrong-btn" style="display:none;">🎯 只练错题</button>
+      <button class="btn-outline" id="home-btn">🏠 返回首页</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/synonyms_data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

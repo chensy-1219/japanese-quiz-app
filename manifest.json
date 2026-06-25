@@ -1,0 +1,17 @@
+{
+  "name": "日语单词练习",
+  "short_name": "日语练习",
+  "description": "新标准日本语单词练习 - 两种模式练单词",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f0f2f5",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text y='.75em' font-size='70' text-anchor='middle' x='50'>📚</text></svg>",
+      "sizes": "100x100",
+      "type": "image/svg+xml"
+    }
+  ]
+}
