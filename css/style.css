@@ -359,6 +359,14 @@ html, body {
   line-height: 1.4;
   word-break: keep-all;
 }
+.question-category {
+  font-size: 11px;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
 .question-hint {
   font-size: 13px;
   color: var(--text-light);

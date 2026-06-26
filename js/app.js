@@ -476,6 +476,7 @@ function renderQuestion() {
     $('#question-word').textContent = q.word;
     $('#question-hint').textContent = q.word !== q.kana ? `（${q.kana}）` : '';
   }
+  $('#question-category').textContent = q.category;
 
   // Reset
   const input = $('#answer-input');
