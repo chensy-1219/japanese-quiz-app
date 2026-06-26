@@ -423,6 +423,12 @@ html, body {
   color: var(--success);
   font-size: 18px;
 }
+.feedback-answer .kana-reading {
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-family: var(--font-jp);
+}
 
 /* ====== RESULT SCREEN ====== */
 .result-score {
@@ -494,6 +500,43 @@ html, body {
 .wrong-item .meaning { color: var(--text-secondary); }
 .wrong-item .your-answer { color: var(--danger); font-size: 12px; }
 .wrong-item .arrow { color: var(--text-light); }
+
+/* ====== Wrong Review Card ====== */
+.wrong-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.wrong-count {
+  font-weight: 700;
+  color: var(--danger);
+  font-size: 16px;
+}
+.wrong-total {
+  font-size: 12px;
+  color: var(--text-light);
+}
+.wrong-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.wrong-word-tag {
+  background: var(--danger-light);
+  color: var(--danger);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-family: var(--font-jp);
+  cursor: default;
+}
+.wrong-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
 /* ====== Responsive ====== */
 @media (max-width: 360px) {

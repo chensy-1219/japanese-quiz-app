@@ -210,6 +210,60 @@ const WORDS = [
   {word:"サッカー", kana:"サッカー", meaning:"足球", category:"形容词・副词・寒暄", lesson:1},
 ];
 
+// ====== WRONG WORD STORAGE (localStorage) ======
+const WRONG_STORAGE_KEY = 'jpquiz_wrong';
+
+function getWrongStats() {
+  try {
+    const raw = localStorage.getItem(WRONG_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveWrongStats(stats) {
+  try {
+    localStorage.setItem(WRONG_STORAGE_KEY, JSON.stringify(stats));
+  } catch (e) {
+    // localStorage full or unavailable
+  }
+}
+
+function makeWrongKey(wordObj) {
+  return `${wordObj.word}::${wordObj.kana}`;
+}
+
+function recordWrongAnswer(wordObj) {
+  const stats = getWrongStats();
+  const key = makeWrongKey(wordObj);
+  if (stats[key]) {
+    stats[key].count++;
+    stats[key].lastWrong = Date.now();
+  } else {
+    stats[key] = { count: 1, lastWrong: Date.now() };
+  }
+  saveWrongStats(stats);
+}
+
+function getHighFreqWrongWords(minCount = 2) {
+  const stats = getWrongStats();
+  const entries = Object.entries(stats)
+    .filter(([, v]) => v.count >= minCount)
+    .sort(([, a], [, b]) => b.count - a.count);
+
+  return entries.map(([key, info]) => {
+    const [word, kana] = key.split('::');
+    // Find the full word object from WORDS
+    const wordObj = WORDS.find(w => w.word === word && w.kana === kana);
+    return wordObj ? { ...wordObj, wrongCount: info.count, lastWrong: info.lastWrong } : null;
+  }).filter(Boolean);
+}
+
+function clearWrongStats() {
+  localStorage.removeItem(WRONG_STORAGE_KEY);
+}
+
 // ====== APP STATE ======
 const state = {
   mode: 'cn2jp',
@@ -221,6 +275,7 @@ const state = {
   currentIndex: 0,
   answers: [],
   viewedFeedback: false,
+  reviewMode: false,
 };
 
 // ====== DOM REFS ======
@@ -358,6 +413,7 @@ function initHome() {
       alert('请至少选择一个课程！');
       return;
     }
+    state.reviewMode = false;
     state.filteredWords = filtered;
     const count = Math.min(state.questionCount, filtered.length);
     state.quizWords = shuffle(filtered).slice(0, count);
@@ -366,6 +422,18 @@ function initHome() {
     state.viewedFeedback = false;
     startQuiz();
   });
+
+  // Wrong review button
+  $('#review-wrong-btn').addEventListener('click', startWrongReview);
+
+  // Clear wrong stats button
+  $('#clear-wrong-btn').addEventListener('click', () => {
+    if (!confirm('确定要清空所有错题记录吗？此操作不可恢复。')) return;
+    clearWrongStats();
+    updateWrongReviewUI();
+  });
+
+  updateWrongReviewUI();
 }
 
 // ====== QUIZ SCREEN ======
@@ -383,15 +451,23 @@ function renderQuestion() {
   $('#progress-fill').style.width = `${(state.currentIndex / total) * 100}%`;
   $('#progress-text').textContent = `${idx}/${total}`;
 
-  // Mode badge
-  if (state.mode === 'cn2jp') {
+  // Mode badge & mixed-mode direction
+  let questionMode = state.mode;
+  if (state.reviewMode) {
+    // Randomly pick direction for each question
+    questionMode = Math.random() > 0.5 ? 'cn2jp' : 'jp2cn';
+    $('#mode-badge').textContent = '🔄 错题复习（混合模式）';
+  } else if (state.mode === 'cn2jp') {
     $('#mode-badge').textContent = '🇨🇳 → 🇯🇵  看中文打日文';
   } else {
     $('#mode-badge').textContent = '🇯🇵 → 🇨🇳  看日文打中文';
   }
 
+  // Store current question mode for checkAnswer
+  state.currentQuestionMode = questionMode;
+
   // Question
-  if (state.mode === 'cn2jp') {
+  if (questionMode === 'cn2jp') {
     $('#question-label').textContent = '请写出对应的日文';
     $('#question-word').textContent = q.meaning;
     $('#question-hint').textContent = '（可用假名或汉字假名混合）';
@@ -429,7 +505,7 @@ function checkAnswer() {
 
   let isCorrect = false;
 
-  if (state.mode === 'cn2jp') {
+  if (state.currentQuestionMode === 'cn2jp') {
     // Accept kana or kanji form
     const normalizedUser = normalizeJapanese(userAnswer);
     const normalizedKana = normalizeJapanese(q.kana);
@@ -461,6 +537,11 @@ function checkAnswer() {
     isCorrect: isCorrect,
     skipped: false,
   });
+
+  // Record wrong answer for review
+  if (!isCorrect) {
+    recordWrongAnswer(q);
+  }
 
   state.viewedFeedback = true;
   showFeedback(isCorrect, q);
@@ -537,15 +618,24 @@ function showFeedback(isCorrect, q) {
   if (isCorrect) {
     $('#feedback-icon').textContent = '✅';
     $('#feedback-text').textContent = '正确！';
-    $('#feedback-answer').innerHTML = '';
+    if (state.currentQuestionMode === 'cn2jp') {
+      $('#feedback-answer').innerHTML = `
+        <span class="correct-answer">${q.word}</span>
+        ${q.word !== q.kana ? `<span class="kana-reading">（${q.kana}）</span>` : ''}
+      `;
+    } else {
+      $('#feedback-answer').innerHTML = `
+        <span class="correct-answer">${q.meaning}</span>
+      `;
+    }
   } else {
     $('#feedback-icon').textContent = '❌';
     $('#feedback-text').textContent = '回答错误';
 
-    if (state.mode === 'cn2jp') {
+    if (state.currentQuestionMode === 'cn2jp') {
       $('#feedback-answer').innerHTML = `
         正确答案：<span class="correct-answer">${q.word}</span>
-        ${q.word !== q.kana ? `（${q.kana}）` : ''}
+        ${q.word !== q.kana ? `<span class="kana-reading">（${q.kana}）</span>` : ''}
         <br>你写的：${q.userAnswer || '（空）'}
       `;
     } else {
@@ -578,10 +668,10 @@ function skipQuestion() {
   $('#feedback-icon').textContent = '⏭️';
   $('#feedback-text').textContent = '已跳过';
 
-  if (state.mode === 'cn2jp') {
+  if (state.currentQuestionMode === 'cn2jp') {
     $('#feedback-answer').innerHTML = `
       正确答案：<span class="correct-answer">${q.word}</span>
-      ${q.word !== q.kana ? `（${q.kana}）` : ''}
+      ${q.word !== q.kana ? `<span class="kana-reading">（${q.kana}）</span>` : ''}
     `;
   } else {
     $('#feedback-answer').innerHTML = `
@@ -663,6 +753,7 @@ function showResult() {
       state.currentIndex = 0;
       state.answers = [];
       state.viewedFeedback = false;
+      // Keep reviewMode from current session
       startQuiz();
     };
   } else {
@@ -671,13 +762,17 @@ function showResult() {
 
   // Retry all
   $('#retry-all-btn').onclick = () => {
-    const filtered = filterWords();
-    const count = Math.min(state.questionCount, filtered.length);
-    state.quizWords = shuffle(filtered).slice(0, count);
-    state.currentIndex = 0;
-    state.answers = [];
-    state.viewedFeedback = false;
-    startQuiz();
+    if (state.reviewMode) {
+      startWrongReview();
+    } else {
+      const filtered = filterWords();
+      const count = Math.min(state.questionCount, filtered.length);
+      state.quizWords = shuffle(filtered).slice(0, count);
+      state.currentIndex = 0;
+      state.answers = [];
+      state.viewedFeedback = false;
+      startQuiz();
+    }
   };
 
   // Home
@@ -687,6 +782,68 @@ function showResult() {
 function goHome() {
   showScreen('home-screen');
   updateAvailableCount();
+  updateWrongReviewUI();
+}
+
+// ====== WRONG REVIEW UI ======
+function updateWrongReviewUI() {
+  const card = $('#wrong-review-card');
+  const highFreq = getHighFreqWrongWords(1); // Show all wrong words
+  const highFreq2 = getHighFreqWrongWords(2); // count >= 2 for review
+
+  if (highFreq.length === 0) {
+    // Empty state — show card but with hint
+    $('#wrong-count').textContent = '0';
+    $('#wrong-total').textContent = '完成练习后错词将出现在这里';
+    $('#wrong-top').innerHTML = '<span style="color:var(--text-light);font-size:13px;">💡 练习中答错的词会自动收集，错2次以上可开启混合复习</span>';
+    const reviewBtn = $('#review-wrong-btn');
+    reviewBtn.textContent = '🔄 错题混合复习';
+    reviewBtn.style.opacity = '0.5';
+    reviewBtn.disabled = true;
+    $('#clear-wrong-btn').style.display = 'none';
+    return;
+  }
+
+  card.style.display = 'block';
+  $('#clear-wrong-btn').style.display = '';
+
+  // Count summary
+  const totalErrors = highFreq.reduce((sum, w) => sum + w.wrongCount, 0);
+  $('#wrong-count').textContent = highFreq2.length;
+  $('#wrong-total').textContent = `累计出错 ${totalErrors} 次`;
+
+  // Top 5 preview
+  const top5 = highFreq.slice(0, 5);
+  $('#wrong-top').innerHTML = top5.map(w =>
+    `<span class="wrong-word-tag" title="错了${w.wrongCount}次">${w.word} ×${w.wrongCount}</span>`
+  ).join('');
+
+  // Enable/disable review button
+  const reviewBtn = $('#review-wrong-btn');
+  if (highFreq2.length === 0) {
+    reviewBtn.textContent = '🔄 再错一次即可开启复习（需≥2次）';
+    reviewBtn.style.opacity = '0.5';
+    reviewBtn.disabled = true;
+  } else {
+    reviewBtn.textContent = `🔄 错题混合复习（${highFreq2.length}词）`;
+    reviewBtn.style.opacity = '1';
+    reviewBtn.disabled = false;
+  }
+}
+
+function startWrongReview() {
+  const highFreq = getHighFreqWrongWords(2);
+  if (highFreq.length === 0) return;
+
+  state.reviewMode = true;
+  state.mode = 'cn2jp'; // default, will be overridden per question
+  state.filteredWords = highFreq;
+  const count = Math.min(20, highFreq.length);
+  state.quizWords = shuffle(highFreq).slice(0, count);
+  state.currentIndex = 0;
+  state.answers = [];
+  state.viewedFeedback = false;
+  startQuiz();
 }
 
 // ====== EVENT LISTENERS ======
