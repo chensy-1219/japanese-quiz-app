@@ -1,5 +1,5 @@
 // Service Worker for offline caching
-const CACHE = 'jp-quiz-v2';
+const CACHE = 'jp-quiz-v3';
 
 // Immediately activate new SW
 self.addEventListener('install', (e) => {
@@ -28,16 +28,19 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // Network-first for HTML, cache-first for static assets
-  if (e.request.destination === 'document') {
-    e.respondWith(
-      fetch(e.request)
-        .then(r => { const clone = r.clone(); caches.open(CACHE).then(c => c.put(e.request, clone)); return r; })
-        .catch(() => caches.match(e.request))
-    );
-  } else {
-    e.respondWith(
-      caches.match(e.request).then((r) => r || fetch(e.request))
-    );
-  }
+  // Stale-while-revalidate: serve cache, update cache from network in background
+  e.respondWith(
+    caches.open(CACHE).then((cache) => {
+      return cache.match(e.request).then((cached) => {
+        const fetchPromise = fetch(e.request).then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(e.request, networkResponse.clone());
+          }
+          return networkResponse;
+        }).catch(() => cached);
+        // Return cached immediately, network updates cache for next time
+        return cached || fetchPromise;
+      });
+    })
+  );
 });
