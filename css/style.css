@@ -100,7 +100,7 @@ html, body {
   display: flex;
   gap: 10px;
 }
-.mode-btn {
+.mode-btn, .type-btn {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -114,13 +114,13 @@ html, body {
   transition: all 0.2s;
   font-family: var(--font-cn);
 }
-.mode-btn.active {
+.mode-btn.active, .type-btn.active {
   border-color: var(--primary);
   background: var(--primary-light);
 }
-.mode-btn .mode-icon { font-size: 20px; }
-.mode-btn .mode-label { font-size: 14px; font-weight: 600; }
-.mode-btn .mode-hint { font-size: 11px; color: var(--text-secondary); }
+.mode-btn .mode-icon, .type-btn .mode-icon { font-size: 20px; }
+.mode-btn .mode-label, .type-btn .mode-label { font-size: 14px; font-weight: 600; }
+.mode-btn .mode-hint, .type-btn .mode-hint { font-size: 11px; color: var(--text-secondary); }
 
 /* ====== Lesson Grid ====== */
 .lesson-grid {

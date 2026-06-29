@@ -1,5 +1,5 @@
 /* ================================================================
-   日语单词练习 App — 新标准日本语 第1~5课
+   日語单词练习 App — 新标准日本语 第1~8课
    ================================================================ */
 
 // ====== WORD DATA ======
@@ -208,6 +208,165 @@ const WORDS = [
   {word:"コート", kana:"コート", meaning:"大衣", category:"形容词・副词・寒暄", lesson:1},
   {word:"ビール", kana:"ビール", meaning:"啤酒", category:"形容词・副词・寒暄", lesson:1},
   {word:"サッカー", kana:"サッカー", meaning:"足球", category:"形容词・副词・寒暄", lesson:1},
+
+  // ===== 交通・移动 =====
+  {word:"新幹線", kana:"しんかんせん", meaning:"新干线", category:"交通・移动", lesson:6},
+  {word:"飛行機", kana:"ひこうき", meaning:"飞机", category:"交通・移动", lesson:6},
+  {word:"電車", kana:"でんしゃ", meaning:"电车", category:"交通・移动", lesson:6},
+  {word:"バス", kana:"バス", meaning:"公交车", aliases:["巴士","公交"], category:"交通・移动", lesson:6},
+  {word:"タクシー", kana:"タクシー", meaning:"出租车", aliases:["出租","的士"], category:"交通・移动", lesson:6},
+  {word:"船", kana:"ふね", meaning:"船", category:"交通・移动", lesson:6},
+  {word:"美術館", kana:"びじゅつかん", meaning:"美术馆", aliases:["艺术馆"], category:"场所・建筑", lesson:6},
+  {word:"友達", kana:"ともだち", meaning:"朋友", aliases:["好友","伙伴"], category:"人称・身份", lesson:6},
+  {word:"アパート", kana:"アパート", meaning:"公寓", category:"场所・建筑", lesson:6},
+  {word:"空港", kana:"くうこう", meaning:"机场", category:"场所・建筑", lesson:6},
+  {word:"歩いて", kana:"あるいて", meaning:"步行", aliases:["走路"], category:"交通・移动", lesson:6},
+  {word:"まっすぐ", kana:"まっすぐ", meaning:"笔直/直接", category:"交通・移动", lesson:6},
+  {word:"一緒に", kana:"いっしょに", meaning:"一起", category:"交通・移动", lesson:6},
+  {word:"たしか", kana:"たしか", meaning:"大概是/我记得", category:"交通・移动", lesson:6},
+
+  // ===== 时间・日期（补充）=====
+  {word:"来月", kana:"らいげつ", meaning:"下个月", aliases:["下月"], category:"时间・日期", lesson:6},
+  {word:"先月", kana:"せんげつ", meaning:"上个月", aliases:["上月"], category:"时间・日期", lesson:6},
+  {word:"今月", kana:"こんげつ", meaning:"这个月", aliases:["本月"], category:"时间・日期", lesson:6},
+
+  // ===== 饮食・食物 =====
+  {word:"コーヒー", kana:"コーヒー", meaning:"咖啡", category:"饮食・食物", lesson:7},
+  {word:"コーラ", kana:"コーラ", meaning:"可乐", category:"饮食・食物", lesson:7},
+  {word:"お茶", kana:"おちゃ", meaning:"茶", aliases:["茶叶","茶水"], category:"饮食・食物", lesson:7},
+  {word:"ワイン", kana:"ワイン", meaning:"葡萄酒", aliases:["红酒"], category:"饮食・食物", lesson:7},
+  {word:"パン", kana:"パン", meaning:"面包", category:"饮食・食物", lesson:7},
+  {word:"ケーキ", kana:"ケーキ", meaning:"蛋糕", category:"饮食・食物", lesson:7},
+  {word:"お粥", kana:"おかゆ", meaning:"粥", aliases:["稀饭"], category:"饮食・食物", lesson:7},
+  {word:"昼ご飯", kana:"ひるごはん", meaning:"午饭", aliases:["午餐","中饭"], category:"饮食・食物", lesson:7},
+  {word:"弁当", kana:"べんとう", meaning:"盒饭", aliases:["便当"], category:"饮食・食物", lesson:7},
+  {word:"そば", kana:"そば", meaning:"荞麦面", category:"饮食・食物", lesson:7},
+  {word:"うどん", kana:"うどん", meaning:"乌冬面", category:"饮食・食物", lesson:7},
+  {word:"親子丼", kana:"おやこどん", meaning:"鸡肉鸡蛋盖饭", aliases:["亲子丼"], category:"饮食・食物", lesson:7},
+  {word:"カレー", kana:"カレー", meaning:"咖喱饭", aliases:["咖喱"], category:"饮食・食物", lesson:7},
+  {word:"卵", kana:"たまご", meaning:"鸡蛋", aliases:["蛋"], category:"饮食・食物", lesson:7},
+  {word:"チーズ", kana:"チーズ", meaning:"奶酪", aliases:["芝士","干酪"], category:"饮食・食物", lesson:7},
+  {word:"リンゴ", kana:"リンゴ", meaning:"苹果", category:"饮食・食物", lesson:7},
+  {word:"イチゴ", kana:"イチゴ", meaning:"草莓", category:"饮食・食物", lesson:7},
+
+  // ===== 娱乐・休闲 =====
+  {word:"音楽", kana:"おんがく", meaning:"音乐", category:"娱乐・休闲", lesson:7},
+  {word:"映画", kana:"えいが", meaning:"电影", category:"娱乐・休闲", lesson:7},
+  {word:"動物園", kana:"どうぶつえん", meaning:"动物园", category:"娱乐・休闲", lesson:7},
+  {word:"パンダ", kana:"パンダ", meaning:"熊猫", category:"娱乐・休闲", lesson:7},
+  {word:"テニス", kana:"テニス", meaning:"网球", category:"娱乐・休闲", lesson:7},
+  {word:"ジョギング", kana:"ジョギング", meaning:"慢跑", category:"娱乐・休闲", lesson:7},
+  {word:"野球", kana:"やきゅう", meaning:"棒球", category:"娱乐・休闲", lesson:7},
+
+  // ===== 通信・书类 =====
+  {word:"申込書", kana:"もうしこみしょ", meaning:"申请书", category:"通信・书类", lesson:7},
+  {word:"手紙", kana:"てがみ", meaning:"信", aliases:["信件","书信"], category:"通信・书类", lesson:7},
+  {word:"CD", kana:"CD", meaning:"CD", category:"通信・书类", lesson:7},
+
+  // ===== 物品・礼物 =====
+  {word:"宿題", kana:"しゅくだい", meaning:"作业", aliases:["功课"], category:"通信・书类", lesson:8},
+  {word:"プレゼント", kana:"プレゼント", meaning:"礼物", aliases:["礼品"], category:"物品・礼物", lesson:8},
+  {word:"チケット", kana:"チケット", meaning:"票", aliases:["门票","入场券"], category:"物品・礼物", lesson:8},
+  {word:"お祝い", kana:"おいわい", meaning:"贺礼", aliases:["祝贺"], category:"物品・礼物", lesson:8},
+
+  // ===== 动词（补充）=====
+  {word:"行く", kana:"いく", meaning:"去", aliases:["前往"], category:"动词", lesson:6},
+  {word:"帰る", kana:"かえる", meaning:"回家/回去", aliases:["返回","回来"], category:"动词", lesson:6},
+  {word:"来る", kana:"くる", meaning:"来", aliases:["过来","来到"], category:"动词", lesson:6},
+  {word:"飲む", kana:"のむ", meaning:"喝", category:"动词", lesson:7},
+  {word:"買う", kana:"かう", meaning:"买", aliases:["购买"], category:"动词", lesson:7},
+  {word:"撮る", kana:"とる", meaning:"拍照", aliases:["拍摄","照相"], category:"动词", lesson:7},
+  {word:"書く", kana:"かく", meaning:"写", aliases:["书写"], category:"动词", lesson:7},
+  {word:"読む", kana:"よむ", meaning:"读", aliases:["阅读"], category:"动词", lesson:7},
+  {word:"聞く", kana:"きく", meaning:"听", aliases:["听见"], category:"动词", lesson:7},
+  {word:"食べる", kana:"たべる", meaning:"吃", aliases:["食用"], category:"动词", lesson:7},
+  {word:"見る", kana:"みる", meaning:"看", aliases:["观看"], category:"动词", lesson:7},
+  {word:"する", kana:"する", meaning:"做", aliases:["干"], category:"动词", lesson:7},
+  {word:"掃除する", kana:"そうじする", meaning:"打扫", aliases:["清扫","清理"], category:"动词", lesson:7},
+  {word:"会う", kana:"あう", meaning:"见面", aliases:["遇见","相逢"], category:"动词", lesson:8},
+  {word:"送る", kana:"おくる", meaning:"寄/送", aliases:["邮寄","发送"], category:"动词", lesson:8},
+  {word:"作る", kana:"つくる", meaning:"做/制作", aliases:["制造","创造"], category:"动词", lesson:8},
+  {word:"太る", kana:"ふとる", meaning:"胖", aliases:["发胖","变胖"], category:"动词", lesson:8},
+  {word:"出す", kana:"だす", meaning:"拿出/寄出", aliases:["取出","发出"], category:"动词", lesson:8},
+  {word:"届く", kana:"とどく", meaning:"到达/送达", aliases:["收到","抵达"], category:"动词", lesson:8},
+  {word:"貸す", kana:"かす", meaning:"借出（我→你）", aliases:["借给"], category:"动词", lesson:8},
+  {word:"習う", kana:"ならう", meaning:"学习（跟人学）", aliases:["跟随学习"], category:"动词", lesson:8},
+  {word:"もらう", kana:"もらう", meaning:"得到（我←别人）", aliases:["接收","获得"], category:"动词", lesson:8},
+  {word:"かける", kana:"かける", meaning:"打（电话）", aliases:["拨打"], category:"动词", lesson:8},
+  {word:"借りる", kana:"かりる", meaning:"借入（你→我）", aliases:["借用"], category:"动词", lesson:8},
+  {word:"教える", kana:"おしえる", meaning:"教/告诉", aliases:["教导","告知"], category:"动词", lesson:8},
+  {word:"あげる", kana:"あげる", meaning:"给（我→别人）", aliases:["给予","赠送"], category:"动词", lesson:8},
+
+  // ===== 副词・接续词（补充）=====
+  {word:"これから", kana:"これから", meaning:"从现在起", aliases:["接下来","今后"], category:"副词・接续词", lesson:7},
+  {word:"じゃあ", kana:"じゃあ", meaning:"那么", aliases:["那好"], category:"副词・接续词", lesson:7},
+  {word:"いつも", kana:"いつも", meaning:"总是/经常", aliases:["常常","老是"], category:"副词・接续词", lesson:7},
+  {word:"もう", kana:"もう", meaning:"已经", aliases:["早已"], category:"副词・接续词", lesson:8},
+  {word:"まだ", kana:"まだ", meaning:"还/尚未", aliases:["还没"], category:"副词・接续词", lesson:8},
+  {word:"さっき", kana:"さっき", meaning:"刚才", aliases:["刚刚"], category:"副词・接续词", lesson:8},
+  {word:"たった今", kana:"たったいま", meaning:"刚刚", aliases:["方才","刚才"], category:"副词・接续词", lesson:8},
+];
+
+// ====== GRAMMAR DATA（句型翻译）======
+const GRAMMAR = [
+  // === 第1课 判断句 ===
+  {prompt:"我是学生。", answer:["わたしはがくせいです","私は学生です"], lesson:1, point:"判断句"},
+  {prompt:"小李是中国人。", answer:["りさんはちゅうごくじんです","李さんは中国人です"], lesson:1, point:"判断句"},
+  {prompt:"我不是日本人。", answer:["わたしはにほんじんではありません","私は日本人ではありません"], lesson:1, point:"否定"},
+  {prompt:"森先生不是学生。", answer:["もりさんはがくせいではありません","森さんは学生ではありません"], lesson:1, point:"否定"},
+  {prompt:"你是公司职员吗？", answer:["あなたはかいしゃいんですか","あなたは会社員ですか"], lesson:1, point:"疑问"},
+  {prompt:"小李是JC策划公司的职员。", answer:["りさんはjcきかくのしゃいんです","李さんはjcきかくのしゃいんです"], lesson:1, point:"所属"},
+
+  // === 第2课 事物指示 ===
+  {prompt:"这是书。", answer:["これはほんです","これは本です"], lesson:2, point:"事物指示"},
+  {prompt:"那是什么？", answer:["それはなんですか","それは何ですか"], lesson:2, point:"事物指示"},
+  {prompt:"这把伞是我的。", answer:["このかさはわたしのです","この傘は私のです"], lesson:2, point:"连体词"},
+  {prompt:"那个包是谁的？", answer:["そのかばんはだれのです"], lesson:2, point:"所属"},
+
+  // === 第3课 场所 ===
+  {prompt:"这里是百货商店。", answer:["ここはデパートです"], lesson:3, point:"场所指示"},
+  {prompt:"厕所在哪里？", answer:["トイレはどこですか"], lesson:3, point:"场所疑问"},
+  {prompt:"这个多少钱？", answer:["これはいくらですか"], lesson:3, point:"价格"},
+  {prompt:"这个是三百日元。", answer:["これはさんびゃくえんです","これは300円です"], lesson:3, point:"价格"},
+
+  // === 第4课 存在句 ===
+  {prompt:"房间里有桌子和椅子。", answer:["へやにつくえといすがあります","部屋に机と椅子があります"], lesson:4, point:"存在(物)"},
+  {prompt:"桌子上有一只猫。", answer:["つくえのうえにねこがいます","机の上に猫がいます"], lesson:4, point:"存在(动物)"},
+  {prompt:"院子里有什么？", answer:["にわになにがいますか","庭に何がいますか"], lesson:4, point:"存在疑问"},
+  {prompt:"房间里什么也没有。", answer:["へやになにもありません","部屋に何もありません"], lesson:4, point:"全面否定"},
+  {prompt:"书在桌子上。", answer:["ほんはつくえのうえにあります","本は机の上にあります"], lesson:4, point:"位置"},
+  {prompt:"猫在椅子下面。", answer:["ねこはいすのしたにいます","猫は椅子の下にいます"], lesson:4, point:"位置"},
+
+  // === 第5课 动词 ===
+  {prompt:"森先生7点起床。", answer:["もりさんはしちじにおきます","森さんは7時におきます"], lesson:5, point:"时间点"},
+  {prompt:"我昨天没有工作。", answer:["わたしはきのうはたらきませんでした","私は昨日働きませんでした"], lesson:5, point:"过去否定"},
+  {prompt:"我从9点工作到5点。", answer:["わたしはくじからごじまではたらきます","私は9時から5時まで働きます"], lesson:5, point:"起止时间"},
+  {prompt:"什么时候考试？", answer:["いつしけんをしますか","いつ試験をしますか"], lesson:5, point:"疑问"},
+  {prompt:"我每天早上7点起床。", answer:["わたしはまいあさしちじにおきます","私は毎朝7時におきます"], lesson:5, point:"时间"},
+
+  // === 第6课 移动 ===
+  {prompt:"吉田先生下个月去中国。", answer:["よしださんはらいげつちゅうごくへいきます","吉田さんは来月中国へ行きます"], lesson:6, point:"移动"},
+  {prompt:"小李上个月从北京来的。", answer:["りさんはせんげつぺきんからきました","李さんは先月北京から来ました"], lesson:6, point:"起点"},
+  {prompt:"小野女士和朋友一起回去了。", answer:["おのさんはともだちとかえりました","小野さんは友達と帰りました"], lesson:6, point:"共同者"},
+  {prompt:"森先生从东京坐新干线去广岛。", answer:["もりさんはとうきょうからひろしままでしんかんせんでいきます","森さんは東京から広島まで新幹線で行きます"], lesson:6, point:"移动全要素"},
+  {prompt:"我坐公交车回家。", answer:["わたしはバスでいえへかえります","私はバスで家へ帰ります"], lesson:6, point:"交通"},
+  {prompt:"我走路回公寓。", answer:["わたしはあるいてアパートへかえります","私は歩いてアパートへ帰ります"], lesson:6, point:"步行"},
+
+  // === 第7课 动作 ===
+  {prompt:"小李每天喝咖啡。", answer:["りさんはまいにちコーヒーをのみます","李さんは毎日コーヒーを飲みます"], lesson:7, point:"宾语"},
+  {prompt:"我在图书馆读书。", answer:["わたしはとしょかんでほんをよみます","私は図書館で本を読みます"], lesson:7, point:"动作场所"},
+  {prompt:"请给我咖啡或茶。", answer:["コーヒーかおちゃをください","コーヒーかお茶をください"], lesson:7, point:"选择/请求"},
+  {prompt:"我每天在食堂吃饭。", answer:["わたしはまいにちしょくどうでごはんをたべます","私は毎日食堂でご飯を食べます"], lesson:7, point:"动作场所"},
+  {prompt:"我听音乐。", answer:["わたしはおんがくをききます","私は音楽を聞きます"], lesson:7, point:"宾语"},
+
+  // === 第8课 手段/授受 ===
+  {prompt:"小李用日语写信。", answer:["りさんはにほんごでてがみをかきます","李さんは日本語で手紙を書きます"], lesson:8, point:"手段"},
+  {prompt:"我给小野女士特产。", answer:["わたしはおのさんにおみやげをあげます","私は小野さんにお土産をあげます"], lesson:8, point:"あげる"},
+  {prompt:"我从小野女士那得到了字典。", answer:["わたしはおのさんにじしょをもらいました","私は小野さんに辞書をもらいました"], lesson:8, point:"もらう"},
+  {prompt:"已经做完作业了。", answer:["もうしゅくだいをしました","もう宿題をしました"], lesson:8, point:"完了"},
+  {prompt:"还没吃。", answer:["まだたべていません","まだ食べていません"], lesson:8, point:"未完了"},
+  {prompt:"我在车站见到了森先生。", answer:["わたしはえきでもりさんにあいました","私は駅で森さんに会いました"], lesson:8, point:"见面"},
+  {prompt:"我用筷子吃饭。", answer:["わたしははしでごはんをたべます","私は箸でご飯を食べます"], lesson:8, point:"工具"},
 ];
 
 // ====== WRONG WORD STORAGE (localStorage) ======
@@ -266,8 +425,9 @@ function clearWrongStats() {
 
 // ====== APP STATE ======
 const state = {
+  quizType: 'word',  // 'word' | 'grammar'
   mode: 'cn2jp',
-  selectedLessons: new Set([1,2,3,4,5]),
+  selectedLessons: new Set([1,2,3,4,5,6,7,8]),
   selectedCategories: new Set(),
   questionCount: 20,
   filteredWords: [],
@@ -327,8 +487,13 @@ function updateCategoryCount() {
 }
 
 function updateAvailableCount() {
-  const filtered = filterWords();
-  $('#total-words').textContent = filtered.length;
+  const count = getAvailableCount();
+  $('#total-words').textContent = count;
+  if (state.quizType === 'grammar') {
+    $('#total-label').textContent = '句型';
+  } else {
+    $('#total-label').textContent = '单词';
+  }
 }
 
 function filterWords() {
@@ -336,6 +501,17 @@ function filterWords() {
     state.selectedLessons.has(w.lesson) &&
     state.selectedCategories.has(w.category)
   );
+}
+
+function filterGrammar() {
+  return GRAMMAR.filter(g => state.selectedLessons.has(g.lesson));
+}
+
+function getAvailableCount() {
+  if (state.quizType === 'grammar') {
+    return filterGrammar().length;
+  }
+  return filterWords().length;
 }
 
 function shuffle(arr) {
@@ -355,11 +531,36 @@ function showScreen(id) {
 }
 
 // ====== HOME SCREEN ======
+function switchQuizType(type) {
+  state.quizType = type;
+  if (type === 'grammar') {
+    $('#card-mode').style.display = 'none';
+    $('#card-category').style.display = 'none';
+    $('#card-count').querySelector('h3').textContent = '🔢 题目数量（整句翻译）';
+    $('.subtitle').textContent = '新标准日本语 · 第1~8课 · 语法';
+  } else {
+    $('#card-mode').style.display = '';
+    $('#card-category').style.display = '';
+    $('#card-count').querySelector('h3').textContent = '🔢 题目数量';
+    $('.subtitle').textContent = '新标准日本语 · 第1~8课';
+  }
+  updateAvailableCount();
+}
+
 function initHome() {
   buildCategoryUI();
   updateAvailableCount();
 
-  // Mode toggle
+  // Quiz type toggle (word / grammar)
+  $$('.type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.type-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      switchQuizType(btn.dataset.type);
+    });
+  });
+
+  // Mode toggle (cn2jp / jp2cn)
   $$('.mode-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       $$('.mode-btn').forEach(b => b.classList.remove('active'));
@@ -384,7 +585,7 @@ function initHome() {
   });
 
   $('#select-all-lessons').addEventListener('click', () => {
-    [1,2,3,4,5].forEach(l => state.selectedLessons.add(l));
+    [1,2,3,4,5,6,7,8].forEach(l => state.selectedLessons.add(l));
     $$('.lesson-btn').forEach(b => b.classList.add('selected'));
     updateAvailableCount();
   });
@@ -404,6 +605,23 @@ function initHome() {
 
   // Start button
   $('#start-btn').addEventListener('click', () => {
+    if (state.quizType === 'grammar') {
+      const filtered = filterGrammar();
+      if (filtered.length === 0) {
+        alert('请至少选择一个课程！');
+        return;
+      }
+      state.reviewMode = false;
+      state.filteredWords = filtered;
+      const count = Math.min(state.questionCount, filtered.length);
+      state.quizWords = shuffle(filtered).slice(0, count);
+      state.currentIndex = 0;
+      state.answers = [];
+      state.viewedFeedback = false;
+      startQuiz();
+      return;
+    }
+
     const filtered = filterWords();
     if (filtered.length === 0) {
       alert('请至少选择一个课程和一个类别！');
@@ -446,15 +664,18 @@ function renderQuestion() {
   const q = state.quizWords[state.currentIndex];
   const total = state.quizWords.length;
   const idx = state.currentIndex + 1;
+  const isGrammar = state.quizType === 'grammar';
 
   // Progress
   $('#progress-fill').style.width = `${(state.currentIndex / total) * 100}%`;
   $('#progress-text').textContent = `${idx}/${total}`;
 
-  // Mode badge & mixed-mode direction
+  // Mode badge
   let questionMode = state.mode;
-  if (state.reviewMode) {
-    // Randomly pick direction for each question
+  if (isGrammar) {
+    questionMode = 'grammar';
+    $('#mode-badge').textContent = '📝 语法翻译  🇨🇳 → 🇯🇵';
+  } else if (state.reviewMode) {
     questionMode = Math.random() > 0.5 ? 'cn2jp' : 'jp2cn';
     $('#mode-badge').textContent = '🔄 错题复习（混合模式）';
   } else if (state.mode === 'cn2jp') {
@@ -462,12 +683,15 @@ function renderQuestion() {
   } else {
     $('#mode-badge').textContent = '🇯🇵 → 🇨🇳  看日文打中文';
   }
-
-  // Store current question mode for checkAnswer
   state.currentQuestionMode = questionMode;
 
   // Question
-  if (questionMode === 'cn2jp') {
+  if (isGrammar) {
+    $('#question-label').textContent = '请将下列中文翻译成日文';
+    $('#question-word').textContent = q.prompt;
+    $('#question-hint').textContent = `（${q.point} · 可用假名或汉字）`;
+    $('#question-category').textContent = `第${q.lesson}课`;
+  } else if (questionMode === 'cn2jp') {
     $('#question-label').textContent = '请写出对应的日文';
     $('#question-word').textContent = q.meaning;
     $('#question-hint').textContent = '（可用假名或汉字假名混合）';
@@ -476,13 +700,15 @@ function renderQuestion() {
     $('#question-word').textContent = q.word;
     $('#question-hint').textContent = q.word !== q.kana ? `（${q.kana}）` : '';
   }
-  $('#question-category').textContent = q.category;
+  $('#question-category').textContent = isGrammar ? `第${q.lesson}课 · ${q.point}` : q.category;
 
   // Reset
   const input = $('#answer-input');
+  input.blur();
   input.value = '';
   input.className = 'answer-input';
-  input.focus();
+  // Delay focus to let IME fully reset after blur
+  setTimeout(() => input.focus(), 50);
   $('#feedback').style.display = 'none';
   $('#submit-btn').style.display = 'block';
   $('#skip-btn').style.display = 'block';
@@ -506,7 +732,11 @@ function checkAnswer() {
 
   let isCorrect = false;
 
-  if (state.currentQuestionMode === 'cn2jp') {
+  if (state.currentQuestionMode === 'grammar') {
+    // Grammar: accept any of the answer variants (kana or kanji)
+    const normalizedUser = normalizeJapanese(userAnswer);
+    isCorrect = q.answer.some(a => normalizeJapanese(a) === normalizedUser);
+  } else if (state.currentQuestionMode === 'cn2jp') {
     // Accept kana or kanji form
     const normalizedUser = normalizeJapanese(userAnswer);
     const normalizedKana = normalizeJapanese(q.kana);
@@ -545,7 +775,7 @@ function checkAnswer() {
   }
 
   state.viewedFeedback = true;
-  showFeedback(isCorrect, q);
+  showFeedback(isCorrect, q, userAnswer);
 }
 
 function normalizeJapanese(str) {
@@ -606,20 +836,29 @@ function normalizeChinese(str) {
   return str.trim().replace(/\s+/g, '');
 }
 
-function showFeedback(isCorrect, q) {
+function showFeedback(isCorrect, q, userAnswer) {
   const fb = $('#feedback');
   fb.style.display = 'block';
   fb.className = 'feedback ' + (isCorrect ? 'correct' : 'wrong');
+  const isGrammar = state.quizType === 'grammar';
 
-  // Hide input & submit
-  $('#answer-input').style.display = 'none';
+  // Hide input & submit, blur to reset IME state
+  const input = $('#answer-input');
+  input.style.display = 'none';
+  input.blur();
   $('#submit-btn').style.display = 'none';
   $('#skip-btn').style.display = 'none';
 
   if (isCorrect) {
     $('#feedback-icon').textContent = '✅';
     $('#feedback-text').textContent = '正确！';
-    if (state.currentQuestionMode === 'cn2jp') {
+    if (isGrammar) {
+      $('#feedback-answer').innerHTML = `
+        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">${q.prompt}</div>
+        <span class="correct-answer" style="font-size:18px">${q.answer[0]}</span>
+        ${q.answer.length > 1 ? `<div style="font-size:12px;color:var(--text-light);margin-top:2px">也可：${q.answer.slice(1).join(' / ')}</div>` : ''}
+      `;
+    } else if (state.currentQuestionMode === 'cn2jp') {
       $('#feedback-answer').innerHTML = `
         <span class="correct-answer">${q.word}</span>
         ${q.word !== q.kana ? `<span class="kana-reading">（${q.kana}）</span>` : ''}
@@ -633,16 +872,23 @@ function showFeedback(isCorrect, q) {
     $('#feedback-icon').textContent = '❌';
     $('#feedback-text').textContent = '回答错误';
 
-    if (state.currentQuestionMode === 'cn2jp') {
+    if (isGrammar) {
+      $('#feedback-answer').innerHTML = `
+        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">${q.prompt}</div>
+        <div>正确答案：<span class="correct-answer" style="font-size:18px">${q.answer[0]}</span></div>
+        ${q.answer.length > 1 ? `<div style="font-size:12px;color:var(--text-light);margin-top:2px">也可：${q.answer.slice(1).join(' / ')}</div>` : ''}
+        <div style="margin-top:6px;color:var(--danger)">你写的：${userAnswer || '（空）'}</div>
+      `;
+    } else if (state.currentQuestionMode === 'cn2jp') {
       $('#feedback-answer').innerHTML = `
         正确答案：<span class="correct-answer">${q.word}</span>
         ${q.word !== q.kana ? `<span class="kana-reading">（${q.kana}）</span>` : ''}
-        <br>你写的：${q.userAnswer || '（空）'}
+        <br>你写的：${userAnswer || '（空）'}
       `;
     } else {
       $('#feedback-answer').innerHTML = `
         正确答案：<span class="correct-answer">${q.meaning}</span>
-        <br>你写的：${q.userAnswer || '（空）'}
+        <br>你写的：${userAnswer || '（空）'}
       `;
     }
   }
@@ -668,8 +914,14 @@ function skipQuestion() {
   $('#skip-btn').style.display = 'none';
   $('#feedback-icon').textContent = '⏭️';
   $('#feedback-text').textContent = '已跳过';
+  const isGrammar = state.quizType === 'grammar';
 
-  if (state.currentQuestionMode === 'cn2jp') {
+  if (isGrammar) {
+    $('#feedback-answer').innerHTML = `
+      <div style="font-size:14px;color:var(--text-secondary);margin-bottom:4px">${q.prompt}</div>
+      正确答案：<span class="correct-answer" style="font-size:18px">${q.answer[0]}</span>
+    `;
+  } else if (state.currentQuestionMode === 'cn2jp') {
     $('#feedback-answer').innerHTML = `
       正确答案：<span class="correct-answer">${q.word}</span>
       ${q.word !== q.kana ? `<span class="kana-reading">（${q.kana}）</span>` : ''}
@@ -729,8 +981,19 @@ function showResult() {
 
   if (wrongAnswers.length > 0) {
     wrongCard.style.display = 'block';
-    wrongList.innerHTML = wrongAnswers.map((a, i) => `
-      <div class="wrong-item">
+    const isGrammar = state.quizType === 'grammar';
+    wrongList.innerHTML = wrongAnswers.map((a, i) => {
+      if (isGrammar) {
+        return `<div class="wrong-item" style="flex-direction:column;align-items:flex-start;gap:4px">
+          <span style="font-size:13px;color:var(--text-secondary)">${i+1}. ${a.word.prompt}</span>
+          <span style="font-size:16px;color:var(--success);font-weight:600">${a.word.answer[0]}</span>
+          ${a.skipped
+            ? '<span style="color:var(--warning);font-size:12px">跳过</span>'
+            : `<span style="color:var(--danger);font-size:13px">你答：${a.userAnswer}</span>`
+          }
+        </div>`;
+      }
+      return `<div class="wrong-item">
         <span style="min-width:24px;color:var(--text-light)">${i+1}.</span>
         <span class="jp">${a.word.word}</span>
         <span class="arrow">→</span>
@@ -739,8 +1002,8 @@ function showResult() {
           ? '<span style="color:var(--warning);font-size:12px">跳过</span>'
           : `<span class="your-answer">你答：${a.userAnswer}</span>`
         }
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
   } else {
     wrongCard.style.display = 'none';
   }
@@ -763,7 +1026,15 @@ function showResult() {
 
   // Retry all
   $('#retry-all-btn').onclick = () => {
-    if (state.reviewMode) {
+    if (state.quizType === 'grammar') {
+      const filtered = filterGrammar();
+      const count = Math.min(state.questionCount, filtered.length);
+      state.quizWords = shuffle(filtered).slice(0, count);
+      state.currentIndex = 0;
+      state.answers = [];
+      state.viewedFeedback = false;
+      startQuiz();
+    } else if (state.reviewMode) {
       startWrongReview();
     } else {
       const filtered = filterWords();
@@ -782,6 +1053,7 @@ function showResult() {
 
 function goHome() {
   showScreen('home-screen');
+  switchQuizType(state.quizType);  // reset card visibility + subtitle
   updateAvailableCount();
   updateWrongReviewUI();
 }
@@ -857,8 +1129,9 @@ function initQuiz() {
     goHome();
   });
 
-  // Keyboard: Enter to submit
+  // Keyboard: Enter to submit (avoid intercepting IME composition)
   $('#answer-input').addEventListener('keydown', (e) => {
+    if (e.isComposing || e.keyCode === 229) return;  // IME 组合中，不拦截
     if (e.key === 'Enter') {
       e.preventDefault();
       if (state.viewedFeedback) {

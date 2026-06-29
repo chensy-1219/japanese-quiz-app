@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>日语单词练习 - 新标准日本语</title>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=5">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1a1a2e">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,10 +18,24 @@
   <div id="home-screen" class="screen active">
     <div class="header">
       <h1>📚 日语单词练习</h1>
-      <p class="subtitle">新标准日本语 · 第1~5课</p>
+      <p class="subtitle">新标准日本语 · 第1~8课</p>
     </div>
 
     <div class="card">
+      <h3>📋 练习类型</h3>
+      <div class="mode-toggle">
+        <button class="type-btn active" data-type="word">
+          <span class="mode-icon">📚</span>
+          <span class="mode-label">单词练习</span>
+        </button>
+        <button class="type-btn" data-type="grammar">
+          <span class="mode-icon">📝</span>
+          <span class="mode-label">语法翻译</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="card" id="card-mode">
       <h3>🎯 练习模式</h3>
       <div class="mode-toggle">
         <button class="mode-btn active" data-mode="cn2jp">
@@ -45,6 +59,9 @@
         <button class="lesson-btn selected" data-lesson="3">第3课</button>
         <button class="lesson-btn selected" data-lesson="4">第4课</button>
         <button class="lesson-btn selected" data-lesson="5">第5课</button>
+        <button class="lesson-btn selected" data-lesson="6">第6课</button>
+        <button class="lesson-btn selected" data-lesson="7">第7课</button>
+        <button class="lesson-btn selected" data-lesson="8">第8课</button>
       </div>
       <div class="select-all-row">
         <button class="text-btn" id="select-all-lessons">全选</button>
@@ -52,12 +69,12 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" id="card-category">
       <h3>🏷️ 单词类别 <span class="badge" id="category-count"></span></h3>
       <div class="category-grid" id="category-grid"></div>
     </div>
 
-    <div class="card">
+    <div class="card" id="card-count">
       <h3>🔢 题目数量</h3>
       <div class="count-slider">
         <input type="range" id="question-count" min="5" max="50" value="20" step="5">
@@ -81,7 +98,7 @@
     <button class="btn-primary btn-large" id="start-btn">🚀 开始练习</button>
 
     <div class="footer-info">
-      <p>共 <strong id="total-words">0</strong> 个单词可用</p>
+      <p>共 <strong id="total-words">0</strong> 个<span id="total-label">单词</span>可用</p>
     </div>
   </div>
 
@@ -109,6 +126,7 @@
         <input type="text" id="answer-input"
                class="answer-input"
                placeholder="输入答案..."
+               inputmode="text"
                autocomplete="off"
                autocorrect="off"
                autocapitalize="off">
@@ -170,7 +188,7 @@
   </div>
 </div>
 
-<script src="js/synonyms_data.js?v=3"></script>
-<script src="js/app.js?v=3"></script>
+<script src="js/synonyms_data.js?v=4"></script>
+<script src="js/app.js?v=7"></script>
 </body>
 </html>
