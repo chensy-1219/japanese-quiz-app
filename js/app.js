@@ -1165,7 +1165,47 @@ if ('serviceWorker' in navigator) {
 }
 
 // ====== BOOT ======
+// ====== Theme Toggle ======
+const THEME_KEY = 'japanese-quiz-theme';
+
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = $('#theme-toggle');
+  if (btn) {
+    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    btn.setAttribute('title', theme === 'dark' ? '切换浅色模式' : '切换深色模式');
+    btn.setAttribute('aria-label', btn.getAttribute('title'));
+  }
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  localStorage.setItem(THEME_KEY, next);
+}
+
+function initTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  const theme = saved || getSystemTheme();
+  applyTheme(theme);
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem(THEME_KEY)) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  $('#theme-toggle').addEventListener('click', toggleTheme);
+
   initHome();
   initQuiz();
 });
