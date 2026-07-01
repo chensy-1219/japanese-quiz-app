@@ -305,6 +305,48 @@ const WORDS = [
   {word:"まだ", kana:"まだ", meaning:"还/尚未", aliases:["还没"], category:"副词・接续词", lesson:8},
   {word:"さっき", kana:"さっき", meaning:"刚才", aliases:["刚刚"], category:"副词・接续词", lesson:8},
   {word:"たった今", kana:"たったいま", meaning:"刚刚", aliases:["方才","刚才"], category:"副词・接续词", lesson:8},
+
+  // ===== 食物・饮料（第9课）=====
+  {word:"料理", kana:"りょうり", meaning:"菜肴/料理", aliases:["菜","菜肴"], category:"食物・饮料", lesson:9},
+  {word:"四川料理", kana:"しせんりょうり", meaning:"四川菜", category:"食物・饮料", lesson:9},
+  {word:"スープ", kana:"スープ", meaning:"汤", aliases:["汤品"], category:"食物・饮料", lesson:9},
+  {word:"北京ダック", kana:"ペキンダック", meaning:"北京烤鸭", aliases:["烤鸭"], category:"食物・饮料", lesson:9},
+  {word:"食べ物", kana:"たべもの", meaning:"食物", aliases:["吃的","食品"], category:"食物・饮料", lesson:9},
+  {word:"飲み物", kana:"のみもの", meaning:"饮料", aliases:["喝的","饮品"], category:"食物・饮料", lesson:9},
+  {word:"お湯", kana:"おゆ", meaning:"热水/开水", aliases:["热水","开水"], category:"食物・饮料", lesson:9},
+  {word:"水", kana:"みず", meaning:"水/凉水", aliases:["凉水"], category:"食物・饮料", lesson:9},
+  {word:"お茶", kana:"おちゃ", meaning:"茶", aliases:["茶","茶叶"], category:"食物・饮料", lesson:9},
+  {word:"紅茶", kana:"こうちゃ", meaning:"红茶", category:"食物・饮料", lesson:9},
+  {word:"牛乳", kana:"ぎゅうにゅう", meaning:"牛奶", aliases:["奶"], category:"食物・饮料", lesson:9},
+  {word:"お酒", kana:"おさけ", meaning:"酒/日本酒", aliases:["酒","酒精"], category:"食物・饮料", lesson:9},
+
+  // ===== 味觉形容词（第9课）=====
+  {word:"辛い", kana:"からい", meaning:"辣", aliases:["辛辣"], category:"味觉形容词", lesson:9},
+  {word:"甘い", kana:"あまい", meaning:"甜", aliases:["甜味"], category:"味觉形容词", lesson:9},
+  {word:"塩辛い", kana:"しおからい", meaning:"咸", aliases:["咸味","齁"], category:"味觉形容词", lesson:9},
+  {word:"酸っぱい", kana:"すっぱい", meaning:"酸", aliases:["酸味"], category:"味觉形容词", lesson:9},
+  {word:"苦い", kana:"にがい", meaning:"苦", aliases:["苦味"], category:"味觉形容词", lesson:9},
+  {word:"美味しい", kana:"おいしい", meaning:"好吃/美味", aliases:["好吃","好喝","美味"], category:"味觉形容词", lesson:9},
+  {word:"まずい", kana:"まずい", meaning:"不好吃/难吃", aliases:["难吃","不好吃"], category:"味觉形容词", lesson:9},
+
+  // ===== 状态形容词（第9课）=====
+  {word:"熱い", kana:"あつい", meaning:"热/烫", aliases:["烫","炎热"], category:"状态形容词", lesson:9},
+  {word:"冷たい", kana:"つめたい", meaning:"凉/冰", aliases:["冰冷","冰凉"], category:"状态形容词", lesson:9},
+  {word:"温かい", kana:"あたたかい", meaning:"温暖/温热", aliases:["暖和","温热"], category:"状态形容词", lesson:9},
+  {word:"楽しい", kana:"たのしい", meaning:"愉快/快乐", aliases:["快乐","开心","愉快"], category:"状态形容词", lesson:9},
+  {word:"面白い", kana:"おもしろい", meaning:"有趣/有意思", aliases:["有趣","有意思","好玩"], category:"状态形容词", lesson:9},
+  {word:"広い", kana:"ひろい", meaning:"宽敞/宽广", aliases:["宽敞","宽阔","辽阔"], category:"状态形容词", lesson:9},
+
+  // ===== 其他名词（第9课）=====
+  {word:"音楽", kana:"おんがく", meaning:"音乐", category:"其他名词", lesson:9},
+  {word:"天気", kana:"てんき", meaning:"天气", aliases:["气候"], category:"其他名词", lesson:9},
+  {word:"旅行", kana:"りょこう", meaning:"旅行", aliases:["旅游"], category:"其他名词", lesson:9},
+
+  // ===== 程度副词（第9课）=====
+  {word:"とても", kana:"とても", meaning:"很/非常", aliases:["非常","特别","十分"], category:"程度副词", lesson:9},
+  {word:"あまり", kana:"あまり", meaning:"不太…（后接否定）", aliases:["不怎么"], category:"程度副词", lesson:9},
+  {word:"本当に", kana:"ほんとうに", meaning:"真的/实在", aliases:["真的","确实","实在"], category:"程度副词", lesson:9},
+  {word:"ちょうど", kana:"ちょうど", meaning:"正好/刚好", aliases:["正好","刚好"], category:"程度副词", lesson:9},
 ];
 
 // ====== GRAMMAR DATA（句型翻译）======
@@ -367,6 +409,16 @@ const GRAMMAR = [
   {prompt:"还没吃。", answer:["まだたべていません","まだ食べていません"], lesson:8, point:"未完了"},
   {prompt:"我在车站见到了森先生。", answer:["わたしはえきでもりさんにあいました","私は駅で森さんに会いました"], lesson:8, point:"见面"},
   {prompt:"我用筷子吃饭。", answer:["わたしははしでごはんをたべます","私は箸でご飯を食べます"], lesson:8, point:"工具"},
+
+  // === 第9课 形容词 ===
+  {prompt:"四川菜很辣。", answer:["しせんりょうりはからいです","四川料理は辛いです"], lesson:9, point:"形容词谓语"},
+  {prompt:"这个汤不太热。", answer:["このスープはあまりあつくないです","このスープはあまり熱くないです"], lesson:9, point:"あまり～ない"},
+  {prompt:"旅行很开心。", answer:["りょこうはたのしいです","旅行は楽しいです"], lesson:9, point:"形容词谓语"},
+  {prompt:"今天天气不好。", answer:["きょうはてんきがよくないです","今日は天気がよくないです"], lesson:9, point:"いい否定"},
+  {prompt:"这本书非常有趣。", answer:["このほんはとてもおもしろいです","この本はとても面白いです"], lesson:9, point:"とても"},
+  {prompt:"北京烤鸭很好吃。", answer:["ペキンダックはおいしいです","北京ダックは美味しいです"], lesson:9, point:"形容词谓语"},
+  {prompt:"这个菜不太好吃。", answer:["このりょうりはあまりおいしくないです","この料理はあまり美味しくないです"], lesson:9, point:"あまり～ない"},
+  {prompt:"茶不是很热。", answer:["おちゃはあまりあつくないです","お茶はあまり熱くないです"], lesson:9, point:"あまり～ない"},
 ];
 
 // ====== WRONG WORD STORAGE (localStorage) ======
